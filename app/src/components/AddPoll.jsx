@@ -8,12 +8,12 @@ export default function AddPoll() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log(event.target[1].checked);
-    // console.log(event.target[2].checked);
+
     if (event.target[0].value === "") {
       alert("name field must not be empty!");
       return null;
     }
+    // event.target[0].value = "";
     if (
       event.target[1].checked === false &&
       event.target[2].checked === false
@@ -21,6 +21,9 @@ export default function AddPoll() {
       alert("Please Enter Choice Before Submitting!!!");
       return null;
     }
+    // event.target[1].checked = false;
+    // event.target[2].checked = false;
+
     // if (event.target[1].checked) {
     //   setChoice(true);
     // } else {
@@ -54,6 +57,8 @@ export default function AddPoll() {
             if (response !== null) {
               apiCall();
             }
+            setName("");
+            setChoice(null);
           }}
         >
           <input
@@ -70,7 +75,9 @@ export default function AddPoll() {
               name="choice"
               id="yes"
               className={addPollSCSS.container__form_radio_input}
-              onClick={() => setChoice(true)}
+              onClick={(e) => {
+                setChoice(true);
+              }}
             />
             <label
               htmlFor="yes"
