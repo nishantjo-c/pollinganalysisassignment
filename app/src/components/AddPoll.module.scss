@@ -1,15 +1,26 @@
+@import '../index.scss';
+
 .container{
   height: 100vh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   padding-top: 20rem;
   
   &__title{
     font-size: 3rem;
+    
+    @include respond(phone){
+      font-size: 2rem;
+    }
   }
   &__form{
+
+    @include respond(phone){
+      margin-top: 1rem;
+    }
     
     &_name{
       background-color: rgba(gray, .3);
@@ -17,21 +28,45 @@
       width: 25rem;
       font-size: 2rem;
       outline: none;
+      border-radius: 1rem;
+
+      @include respond(phone){
+        font-size: 1.5rem;
+        height: 3.5rem;
+        width: 16rem;
+        border-radius: .5rem;
+      }
+
       &:focus{
         text-align: center;
+        opacity: .65;
+        &::placeholder{
+          color: transparent;
+        }
       }
     }
     &_radio{
       // background-color: rebeccapurple;
       display: flex;
       align-items: center;
+      @include respond(phone){
+        margin-top: 1rem;
+      }
       
       &_input{
         width: 2rem;
-        height: 2rem;  
+        height: 2rem;
+        @include respond(phone){
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+        
       }
       &_label{
         font-size: 2rem;
+        @include respond(phone){
+          font-size: 1.5rem;
+        }
         &:not(:last-child){
           margin-right: 3rem;
         }
@@ -43,11 +78,23 @@
       padding: 1rem;
       border-radius: .75rem;
 
+      @include respond(phone){
+        width: 7rem;
+      }
+
       &:hover{
         background-color: rgba(cyan, .5);
         color: white;
         cursor: pointer;
       }
+    }
+    &_btns{
+      @include respond(phone){
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+      }
+      
     }
   }
 }

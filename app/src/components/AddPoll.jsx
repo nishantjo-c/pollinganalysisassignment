@@ -92,15 +92,17 @@ export default function AddPoll() {
               No
             </label>
           </div>
-          <input
-            type="submit"
-            value="submit"
-            className={addPollSCSS.container__form_button}
-          />
+          <div className={addPollSCSS.container__form_btns}>
+            <input
+              type="submit"
+              value="submit"
+              className={addPollSCSS.container__form_button}
+            />
+            <Link to="/pollanalysis">
+              <button className="main__button right">See poll analysis</button>
+            </Link>
+          </div>
         </form>
-        <Link to="/pollanalysis">
-          <button className="main__button right">See poll analysis</button>
-        </Link>
       </div>
     </>
   );

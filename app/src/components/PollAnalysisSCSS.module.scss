@@ -1,7 +1,91 @@
+@import '../index.scss';
+
 .container{
   // background-color: pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  // justify-content: center;
+  width: 100vw;
+  &__charts{
+    display: flex;
+    @include respond(tab-port){
+      flex-direction: column;
+    }
+  }
 }
 
-.barchart{
-  width: 50rem;
+.barchart, .linechart{
+  width: 60rem;
+
+  @include respond(tab-port){
+    width: 45rem;
+  }
+  @include respond(phone){
+    width: 30rem;
+    margin-top: 2rem;
+  }
+  @include respond(less-phone){
+    width: 25rem;
+    
+  }
+}
+
+.linechart{
+  display: flex;
+  align-items:flex-start;
+  
+  @include respond(phone){
+    flex-direction: column;
+  }
+}
+
+.choice{
+  // background-color: cyan;
+  border: 1px solid black;
+  border-radius: .5rem;
+  @include respond(phone){
+    margin: 1rem .5rem;
+  }
+  &__value{
+    width: 10rem;
+    text-decoration: none;
+    font-size: 2rem;
+    display: block;
+    padding: .5rem 1rem;
+    color: palevioletred;
+    text-align: center;
+
+    @include respond(tab-port){
+      width: 6rem;
+      font-size: 1.5rem;
+      padding: .25rem .5rem;
+    }
+    @include respond(phone){
+ 
+    }
+    @include respond(less-phone){
+      width: 5rem;
+      font-size: 1.25rem;
+      
+    }
+    
+  }
+  &__dropdown{
+    display: none;
+
+  }
+  &:hover .choice__dropdown{
+      display: flex;
+      flex-direction: column;
+
+  }
+
+  &__style{
+    &:hover{
+      background-color:aquamarine;
+      color: white;
+    }
+  }
 }

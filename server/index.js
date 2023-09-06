@@ -23,15 +23,15 @@ app.post("/vote", async (req, res) => {
   // console.log(name, choice);
   res.send({ name: name, choice: choice });
   // console.log(req.body);
-  // try {
-  //   const vote = await pool.query(
-  //     `INSERT INTO data (name, vote_choice, "date") VALUES ($1, $2, $3) RETURNING *`,
-  //     [name, choice, new Date()]
-  //   );
-  //   res.json(vote.rows[0]);
-  // } catch (error) {
-  //   console.error(error.message);
-  // }
+  try {
+    const vote = await pool.query(
+      `INSERT INTO data (name, vote_choice, "date") VALUES ($1, $2, $3) RETURNING *`,
+      [name, choice, new Date()]
+    );
+    res.json(vote.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 // votes data by voting_choice (for line chart)
@@ -40,16 +40,13 @@ app.get("/counts", async (req, res) => {
     // by true and false
     const { voting_choice } = req.query;
     // console.log(voting_choice.toLowerCase());
-    // if (
-    //   voting_choice.toLowerCase() !== "true" &&
-    //   voting_choice.toLowerCase() !== "false"
-    // ) {
-    //   return console.error("wrong value");
-    // }
-    // const voted = await pool.query(
-    //   `SELECT COUNT(*), date FROM data WHERE vote_choice = ${voting_choice.toLowerCase()} GROUP BY date`
-    // );
-    // res.json({ data: voted.rows });
+    if (
+      voting_choice.toLowerCase() !== "default" &&
+      voting_choice.toLowerCase() !== "true" &&
+      voting_choice.toLowerCase() !== "false"
+    ) {
+      return console.error("wrong value");
+    }
 
     // in case of both by default condition
     if (voting_choice.toLowerCase() === "default") {
@@ -62,6 +59,11 @@ app.get("/counts", async (req, res) => {
         // [voting_choice.toLowerCase()]
       );
       res.json({ data: { voted: voted.rows, notvoted: notvoted.rows } });
+    } else {
+      const voted = await pool.query(
+        `SELECT COUNT(*), date FROM data WHERE vote_choice = ${voting_choice.toLowerCase()} GROUP BY date`
+      );
+      res.json({ data: voted.rows });
     }
   } catch (error) {
     console.error(error.message);

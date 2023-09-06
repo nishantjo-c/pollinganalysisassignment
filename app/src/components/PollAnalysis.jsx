@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import PollAnalysisSCSS from "./PollAnalysisSCSS.module.scss";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
+import Data from "./Data";
 
 export default function PollAnalysis() {
-  const [condition, setCondition] = useState("true");
+  const [condition, setCondition] = useState("default");
   // declared states
   const [barData, setBarData] = useState({
     labels: null,
@@ -40,7 +41,7 @@ export default function PollAnalysis() {
   // line chart data
   const apiCallLine = async () => {
     const response = await fetch(
-      "http://localhost:3000/counts?voting_choice=default",
+      `http://localhost:3000/counts?voting_choice=${condition}`,
       {
         method: "GET",
         headers: {
@@ -49,64 +50,92 @@ export default function PollAnalysis() {
       }
     );
     const data = await response.json();
-    console.log(data.data);
-    if (condition === "true") {
-    } else if (condition === "false") {
+    // console.log(data.data);
+    if (condition === "true" || condition === "false") {
+      setLineData({
+        labels: data.data.map((obj) => obj.date.split("T")[0]),
+        datasets: [
+          {
+            label: condition === "true" ? "Voted" : "Not Voted",
+            data: data.data.map((obj) => {
+              return obj.count;
+            }),
+            borderColor: condition === "true" ? "green" : "red",
+            tension: 0.1,
+          },
+        ],
+      });
     } else if (condition === "default") {
+      console.log(data);
+      setLineData({
+        labels: data.data.voted.map((obj) => obj.date.split("T")[0]),
+        datasets: [
+          {
+            label: "Voted",
+            data: data.data.voted.map((obj) => {
+              return obj.count;
+            }),
+            borderColor: "green",
+            tension: 0.1,
+          },
+          {
+            label: "Not Voted",
+            data: data.data.notvoted.map((obj) => {
+              return obj.count;
+            }),
+            borderColor: "red",
+            tension: 0.1,
+          },
+        ],
+      });
     }
-    // data.data.map((obj) => console.log(obj.date));
-    // by true and false
-    // setLineData({
-    //   labels: data.data.map((obj) => obj.date),
-    //   datasets: [
-    //     {
-    //       label: "Voted",
-    //       data: data.data.map((obj) => {
-    //         return obj.count;
-    //       }),
-    //       backgroundColor: "red",
-    //     },
-    //   ],
-    // });
-    // by default
-    setLineData({
-      labels: data.data.voted.map((obj) => obj.date),
-      datasets: [
-        {
-          label: "Voted",
-          data: data.data.voted.map((obj) => {
-            return obj.count;
-          }),
-          backgroundColor: "red",
-        },
-        {
-          label: "Not Voted",
-          data: data.data.notvoted.map((obj) => {
-            return obj.count;
-          }),
-          backgroundColor: "green",
-        },
-      ],
-    });
   };
   useEffect(() => {
     apiCallBar();
     apiCallLine();
-  }, []);
+  }, [condition]);
   return (
     <>
       <div className={PollAnalysisSCSS.container}>
         {/* <h1>sup!!</h1> */}
-        <div className={PollAnalysisSCSS.barchart}>
-          <BarChart chartData={barData} />
-          <LineChart chartData={lineData} />
-          <button
-            onClick={() =>
-              setCondition(condition === "true" ? "false" : "true")
-            }
-          >
-            {condition}
-          </button>
+        <Data />
+        <div className={PollAnalysisSCSS.container__charts}>
+          <div className={PollAnalysisSCSS.barchart}>
+            <BarChart chartData={barData} />
+          </div>
+          <div className={PollAnalysisSCSS.linechart}>
+            <LineChart chartData={lineData} />
+            {/* dropdown */}
+            <div className={PollAnalysisSCSS.choice}>
+              <a href="#" className={PollAnalysisSCSS.choice__value}>
+                {condition}&#8628;
+              </a>
+              <div className={PollAnalysisSCSS.choice__dropdown}>
+                <a
+                  href="#"
+                  className={`${PollAnalysisSCSS.choice__value} ${PollAnalysisSCSS.choice__style}`}
+                  onClick={() => setCondition("true")}
+                >
+                  true
+                </a>
+
+                <a
+                  href="#"
+                  className={`${PollAnalysisSCSS.choice__value} ${PollAnalysisSCSS.choice__style}`}
+                  onClick={() => setCondition("false")}
+                >
+                  false
+                </a>
+                <a
+                  href="#"
+                  className={`${PollAnalysisSCSS.choice__value} ${PollAnalysisSCSS.choice__style}`}
+                  onClick={() => setCondition("default")}
+                >
+                  default
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

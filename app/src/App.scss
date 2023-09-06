@@ -1,3 +1,4 @@
+@import './index.scss';
 .page{
   height: 100vh;
   // background-color: rebeccapurple;
@@ -9,16 +10,25 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // height: 30rem;
-  // width: 30rem;
-  // background-color: aquamarine;
+
+  @include respond(less-phone){
+    display: flex;
+    flex-direction: column;
+    top: 40%;
+  }
+  
   &__title{
     margin-bottom: 1rem;
+    
   }
   &__button{
     background-color: cyan;
     padding: 1rem;
     border-radius: .75rem;
+    @include respond(less-phone){
+      // padding: .75rem 1rem;
+      // font-size: 1.35rem;
+    }
 
     &:hover{
       background-color: rgba(cyan, .5);
@@ -31,4 +41,8 @@
 
 .right{
   margin-left: 1rem;
+  @include respond(less-phone){
+    margin-left: 0;
+    margin-top: .5rem;
+  }
 }
