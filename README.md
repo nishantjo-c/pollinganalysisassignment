@@ -25,3 +25,53 @@
 #### Database
 
 1. Postgres SQL
+
+## Setting Up the Project
+
+1. Clone into https://github.com/nishantjo-c/pollinganalysisassignment.git
+2. ### Setup Client
+
+```
+  cd app
+  yarn
+```
+
+_This will initialize the client with necessary dependencies for react_
+install the required dependencies mentioned above for client side
+
+3. ### Setup Server
+
+```
+  cd server
+  npm
+```
+
+_This will initialize the server with necessary dependencs for node and express_
+install teh required dependencied mentioned above for server side
+
+4. ### Setup Database
+   _Setup postgres_
+   Replace the password and databasename with your configurations in `db.js file`
+
+```
+{
+  user: "postgres",
+  password: DB_PASSWORD,
+  database: DB_NAME,
+  host: "localhost",
+  port: 5432,
+}
+```
+
+5. ### Running the project
+   _Run separate servers for both app and server_
+
+```
+  cd app
+  yarn start
+```
+
+```
+  cd server
+  npm start
+```
