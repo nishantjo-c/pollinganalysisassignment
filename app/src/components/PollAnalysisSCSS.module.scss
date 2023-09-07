@@ -1,15 +1,18 @@
 @import '../index.scss';
 
 .container{
-  // background-color: pink;
+  
+  background-image: linear-gradient(to right bottom, rgba(#014871, 1), rgba(#D7EDE2, 1));
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
   // justify-content: center;
   width: 100vw;
+  min-height: 100vh;
   &__charts{
     display: flex;
+    
     @include respond(tab-port){
       flex-direction: column;
     }
@@ -18,6 +21,7 @@
 
 .barchart, .linechart{
   width: 60rem;
+  margin: 2rem;
 
   @include respond(tab-port){
     width: 45rem;
@@ -54,8 +58,9 @@
     font-size: 2rem;
     display: block;
     padding: .5rem 1rem;
-    color: palevioletred;
+    color: rgb(255, 255, 255);
     text-align: center;
+    background-color:#014871;
 
     @include respond(tab-port){
       width: 6rem;
@@ -84,8 +89,8 @@
 
   &__style{
     &:hover{
-      background-color:aquamarine;
-      color: white;
+      background-color:#D7EDE2;
+      color: #014871;
     }
   }
 }

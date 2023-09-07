@@ -48,7 +48,7 @@ export default function AddPoll() {
   }
 
   return (
-    <>
+    <div className={addPollSCSS.wrapper}>
       <div className={addPollSCSS.container}>
         <h1 className={addPollSCSS.container__title}>Enter Polling Info</h1>
         <form
@@ -113,6 +113,6 @@ export default function AddPoll() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }

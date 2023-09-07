@@ -30,6 +30,7 @@ function App() {
           }
         />
         <Route path="/pollanalysis" element={<PollAnalysis />} />
+
         <Route path="/addpollchoice" element={<AddPoll />} />
       </Routes>
     </>

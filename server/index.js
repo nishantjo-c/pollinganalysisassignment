@@ -20,18 +20,18 @@ app.get("/data", async (req, res) => {
 // adding a vote
 app.post("/vote", async (req, res) => {
   const { name, choice } = req.body;
-  console.log(name, choice);
+  // console.log(name, choice);
   // res.send({ name: name, choice: choice });
   // console.log(req.body);
-  // try {
-  //   const vote = await pool.query(
-  //     `INSERT INTO data (name, vote_choice, "date") VALUES ($1, $2, $3) RETURNING *`,
-  //     [name, choice, new Date()]
-  //   );
-  //   res.json(vote.rows[0]);
-  // } catch (error) {
-  //   console.error(error.message);
-  // }
+  try {
+    const vote = await pool.query(
+      `INSERT INTO data (name, vote_choice, "date") VALUES ($1, $2, $3) RETURNING *`,
+      [name, choice, new Date()]
+    );
+    res.json(vote.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 // votes data by voting_choice (for line chart)
