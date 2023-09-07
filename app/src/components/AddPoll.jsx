@@ -11,9 +11,12 @@ export default function AddPoll() {
 
     if (event.target[0].value === "") {
       alert("name field must not be empty!");
+      event.target[1].checked = null;
+      event.target[2].checked = null;
       return null;
     }
-    // event.target[0].value = "";
+    event.target[0].value = "";
+
     if (
       event.target[1].checked === false &&
       event.target[2].checked === false
@@ -21,9 +24,8 @@ export default function AddPoll() {
       alert("Please Enter Choice Before Submitting!!!");
       return null;
     }
-    // event.target[1].checked = false;
-    // event.target[2].checked = false;
-
+    event.target[1].checked = null;
+    event.target[2].checked = null;
     // if (event.target[1].checked) {
     //   setChoice(true);
     // } else {
