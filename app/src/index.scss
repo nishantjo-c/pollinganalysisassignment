@@ -1,7 +1,6 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: 'Josefin Slab', serif;  line-height: 1.5;
+  font-weight: 700;
 
 }
 
@@ -17,7 +16,7 @@ html{
 }
 
 body{
-  background-color: #105075;
+  background-color: #213555;
 }
 @mixin respond($breakpoint){
   @if $breakpoint == less-phone {

@@ -4,13 +4,29 @@
   background-color: #B8CABA;
   height: 30rem;
   overflow-y: scroll;
-
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  
   @include respond(phone){
     height: 20rem;
   }
 
+  // &__body{
+  //   height: 30rem;
+  //   overflow-y: scroll;
+  // }
+
+  &__head{
+    // position: sticky;
+    // width: inherit;
+    background-color: #B8CABA;
+    // height: 10rem;
+        
+  }
+
   &__title{
-    font-size: 2rem;
+    font-size: 1.85rem;
+    // position: fixed;
     @include respond(phone){
       font-size: 1.25rem;
     }
@@ -18,11 +34,12 @@
   &__value{
     font-size: 1.5rem;
     padding: .25rem .5rem;
+    text-align: center;
     @include respond(phone){
       font-size: 1.25rem;
       
     }
   }
   
-
+  
 }

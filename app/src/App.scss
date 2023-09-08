@@ -1,7 +1,7 @@
 @import './index.scss';
 .page{
   height: 100vh;
-  background-image: linear-gradient(to right bottom, rgba(#014871, 1), rgba(#D7EDE2, 1));
+  background-image: linear-gradient(to right bottom, rgba(#213555, 1), rgba(#F0F0F0, 1));
   clip-path: polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%);
   position: relative;
 }
@@ -21,7 +21,7 @@
   &__title{
     margin-bottom: 1rem;
     font-size: 5rem;
-    background: linear-gradient(90deg,  #09203F, #537895 );
+    background: linear-gradient(90deg,  #213555, #4F709C );
     background-clip: text;
     -webkit-text-fill-color: transparent;
     @include respond(phone){
@@ -30,7 +30,7 @@
     
   }
   &__button{
-    background-color: cyan;
+    background-color: #F0F0F0;
     padding: 1rem;
     border-radius: .75rem;
     @include respond(less-phone){

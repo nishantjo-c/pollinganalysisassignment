@@ -22,11 +22,8 @@ export default function Data() {
       <tr
         key={obj.voter_id}
         style={{
-          backgroundColor:
-            obj.vote_choice === true
-              ? "rgba(0, 128, 0, .8)"
-              : "rgba(255,0,0, .8)",
-          // opacity: 0.8,
+          backgroundColor: obj.vote_choice === true ? "#E5D283" : "#4F709C",
+          // opacity: 0.8,["#4F709C", "#E5D283"
         }}
       >
         <td className={dataSCSS.container__value}>{obj.name}</td>
@@ -39,7 +36,7 @@ export default function Data() {
   return (
     <>
       <div className={dataSCSS.container}>
-        <table>
+        <table className={dataSCSS.container__parent}>
           <thead className={dataSCSS.container__head}>
             <tr>
               <th className={dataSCSS.container__title}>Name</th>
@@ -47,7 +44,7 @@ export default function Data() {
               <th className={dataSCSS.container__title}>Date</th>
             </tr>
           </thead>
-          <tbody>{DisplayData}</tbody>
+          <tbody className={dataSCSS.container__body}>{DisplayData}</tbody>
         </table>
       </div>
     </>

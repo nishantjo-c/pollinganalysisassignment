@@ -15,15 +15,15 @@ export default function BarChart({ chartData }) {
         ticks: {
           color: "white",
           font: {
-            size: 13,
+            size: 14,
           },
         },
       },
       x: {
         ticks: {
-          color: ["red", "green"],
+          color: ["#4F709C", "#E5D283"],
           font: {
-            size: 13,
+            size: 14,
           },
         },
       },

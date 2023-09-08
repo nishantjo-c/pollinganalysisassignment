@@ -33,7 +33,7 @@ export default function PollAnalysis() {
           data: data.data.map((obj) => {
             return obj.count;
           }),
-          backgroundColor: ["red", "green"],
+          backgroundColor: ["#4F709C", "#E5D283"],
         },
       ],
     });
@@ -60,7 +60,7 @@ export default function PollAnalysis() {
             data: data.data.map((obj) => {
               return obj.count;
             }),
-            borderColor: condition === "true" ? "green" : "red",
+            borderColor: condition === "true" ? "#E5D283" : "#4F709C",
             tension: 0.1,
           },
         ],
@@ -75,7 +75,7 @@ export default function PollAnalysis() {
             data: data.data.voted.map((obj) => {
               return obj.count;
             }),
-            borderColor: "green",
+            borderColor: "#E5D283",
             tension: 0.1,
           },
           {
@@ -83,7 +83,7 @@ export default function PollAnalysis() {
             data: data.data.notvoted.map((obj) => {
               return obj.count;
             }),
-            borderColor: "red",
+            borderColor: "#4F709C",
             tension: 0.1,
           },
         ],
@@ -98,7 +98,12 @@ export default function PollAnalysis() {
     <>
       <div className={PollAnalysisSCSS.container}>
         {/* <h1>sup!!</h1> */}
+        <h1 className={PollAnalysisSCSS.about}>Voters</h1>
         <Data />
+        <h1 className={PollAnalysisSCSS.about}>
+          Left shows the bar graph with the total no of vote choices and Right
+          shows the Line chart with total vote choices by date{" "}
+        </h1>
         <div className={PollAnalysisSCSS.container__charts}>
           <div className={PollAnalysisSCSS.barchart}>
             <BarChart chartData={barData} />

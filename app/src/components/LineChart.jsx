@@ -21,7 +21,7 @@ export default function LineChart({ chartData }) {
       },
       x: {
         ticks: {
-          color: "black",
+          color: "white",
           font: {
             size: 13,
           },
