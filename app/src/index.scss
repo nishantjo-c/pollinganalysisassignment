@@ -16,7 +16,7 @@ html{
 }
 
 body{
-  background-color: #213555;
+  background-color: #1f2a33;
 }
 @mixin respond($breakpoint){
   @if $breakpoint == less-phone {

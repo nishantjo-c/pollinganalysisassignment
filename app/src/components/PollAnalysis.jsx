@@ -101,8 +101,8 @@ export default function PollAnalysis() {
         <h1 className={PollAnalysisSCSS.about}>Voters</h1>
         <Data />
         <h1 className={PollAnalysisSCSS.about}>
-          Left shows the bar graph with the total no of vote choices and Right
-          shows the Line chart with total vote choices by date{" "}
+          Left shows the bar graph with the total no of <i>vote choices</i> &
+          Right shows the Line chart with total <i>vote choices by date</i>{" "}
         </h1>
         <div className={PollAnalysisSCSS.container__charts}>
           <div className={PollAnalysisSCSS.barchart}>

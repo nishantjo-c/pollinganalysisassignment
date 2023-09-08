@@ -1,7 +1,8 @@
 @import './index.scss';
 .page{
   height: 100vh;
-  background-image: linear-gradient(to right bottom, rgba(#213555, 1), rgba(#F0F0F0, 1));
+  // background-image: linear-gradient(to right bottom, rgba(#213555, 1), rgba(#F0F0F0, 1));
+  background-color: #F0F0F0;
   clip-path: polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%);
   position: relative;
 }
@@ -30,17 +31,18 @@
     
   }
   &__button{
-    background-color: #F0F0F0;
+    background-color: #4F709C;
     padding: 1rem;
     border-radius: .75rem;
+    color: white;
     @include respond(less-phone){
       // padding: .75rem 1rem;
       // font-size: 1.35rem;
     }
 
     &:hover{
-      background-color: rgba(cyan, .5);
-      color: white;
+      background-color: rgba(#213555, .5);
+      color: black;
       cursor: pointer;
     }
     
