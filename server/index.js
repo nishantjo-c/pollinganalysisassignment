@@ -51,17 +51,17 @@ app.get("/counts", async (req, res) => {
     // in case of both by default condition
     if (voting_choice.toLowerCase() === "default") {
       const voted = await pool.query(
-        `SELECT COUNT(*), date FROM data WHERE vote_choice = true GROUP BY date`
+        `SELECT COUNT(*), date FROM data WHERE vote_choice = true GROUP BY date ORDER BY date`
         // [voting_choice.toLowerCase()]
       );
       const notvoted = await pool.query(
-        `SELECT COUNT(*), date FROM data WHERE vote_choice = false GROUP BY date`
+        `SELECT COUNT(*), date FROM data WHERE vote_choice = false GROUP BY date ORDER BY date`
         // [voting_choice.toLowerCase()]
       );
       res.json({ data: { voted: voted.rows, notvoted: notvoted.rows } });
     } else {
       const voted = await pool.query(
-        `SELECT COUNT(*), date FROM data WHERE vote_choice = ${voting_choice.toLowerCase()} GROUP BY date`
+        `SELECT COUNT(*), date FROM data WHERE vote_choice = ${voting_choice.toLowerCase()} GROUP BY date ORDER BY date`
       );
       res.json({ data: voted.rows });
     }
