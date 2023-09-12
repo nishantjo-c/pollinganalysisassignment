@@ -17,12 +17,15 @@ export default function PollAnalysis() {
   });
   // barchart data
   const apiCallBar = async () => {
-    const response = await fetch("http://localhost:3000/results", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://pollinganalysisassignment.vercel.app/results",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     // console.log(data);
     setBarData({
@@ -41,7 +44,7 @@ export default function PollAnalysis() {
   // line chart data
   const apiCallLine = async () => {
     const response = await fetch(
-      `http://localhost:3000/counts?voting_choice=${condition}`,
+      `https://pollinganalysisassignment.vercel.app/counts?voting_choice=${condition}`,
       {
         method: "GET",
         headers: {

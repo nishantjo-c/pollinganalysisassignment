@@ -33,16 +33,19 @@ export default function AddPoll() {
     // }
   }
   async function apiCall() {
-    const response = await fetch(`http://localhost:3000/vote`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        choice,
-      }),
-    });
+    const response = await fetch(
+      `https://pollinganalysisassignment.vercel.app/vote`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          choice,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
   }

@@ -5,12 +5,15 @@ export default function Data() {
   const [data, setData] = useState([]);
   useEffect(() => {
     async function alldata() {
-      const response = await fetch("http://localhost:3000/data", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://pollinganalysisassignment.vercel.app/data",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const { data } = await response.json();
       console.log(data);
       setData(data);
