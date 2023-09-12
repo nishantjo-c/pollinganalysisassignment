@@ -38,7 +38,7 @@ export default function AddPoll() {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/javascript",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name,

@@ -22,7 +22,7 @@ export default function PollAnalysis() {
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/javascript",
+          "Content-Type": "application/json",
         },
       }
     );
@@ -48,7 +48,7 @@ export default function PollAnalysis() {
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/javascript",
+          "Content-Type": "application/json",
         },
       }
     );
