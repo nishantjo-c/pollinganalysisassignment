@@ -9,7 +9,7 @@ app.use(express.json());
 // all votes data
 app.get("/data", async (req, res) => {
   try {
-    const voter = await pool.query(`SELECT * FROM data`);
+    const voter = await pool.query(`SELECT * FROM data ORDER BY date`);
     res.json({ data: voter.rows });
     // res.send({ msg: "yo" });
   } catch (error) {
