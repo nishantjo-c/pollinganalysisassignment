@@ -10,7 +10,7 @@ export default function Data() {
         {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/javascript",
           },
         }
       );
