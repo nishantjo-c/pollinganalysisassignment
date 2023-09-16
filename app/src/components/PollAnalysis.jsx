@@ -69,22 +69,40 @@ export default function PollAnalysis() {
         ],
       });
     } else if (condition === "default") {
-      console.log(data);
+      const votedDates = [];
+      data.data.voted.map((obj) => votedDates.push(obj.date.split("T")[0]));
+      const notVotedDates = [];
+      data.data.notvoted.map((obj) =>
+        notVotedDates.push(obj.date.split("T")[0])
+      );
+      const allDates = [...new Set([...votedDates, ...notVotedDates])];
+      // console.log(allDates);
+
       setLineData({
-        labels: data.data.voted.map((obj) => obj.date.split("T")[0]),
+        labels: allDates.map((date) => date.split("T")[0]),
         datasets: [
           {
             label: "Voted",
-            data: data.data.voted.map((obj) => {
-              return obj.count;
+            data: allDates.map((date) => {
+              const index = votedDates.indexOf(date);
+              if (index !== -1) {
+                return data.data.voted[index].count;
+              } else {
+                return 0;
+              }
             }),
             borderColor: "#E5D283",
             tension: 0.1,
           },
           {
             label: "Not Voted",
-            data: data.data.notvoted.map((obj) => {
-              return obj.count;
+            data: allDates.map((date) => {
+              const index = notVotedDates.indexOf(date);
+              if (index !== -1) {
+                return data.data.notvoted[index].count;
+              } else {
+                return 0;
+              }
             }),
             borderColor: "#4F709C",
             tension: 0.1,

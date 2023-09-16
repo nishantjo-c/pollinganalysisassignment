@@ -15,7 +15,7 @@ export default function Data() {
         }
       );
       const { data } = await response.json();
-      console.log(data);
+      // console.log(data);
       setData(data);
     }
     alldata();
